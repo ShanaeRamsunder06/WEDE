@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <!--CODE ATTRIBUTION-->
 <!--(THE IIE).2024.WEDE5020 MODULE MANUAL.UNPUBLISHED-->
+<!--//Title: Claude AI-->
+<!--//Author: Dario Amodei.-->
+<!--Version: 3.5-->
+<!--Available:https://claude.ai/new-->
+<!--//Date: 14 March 2023-->
 
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS</title>
+    <title>News - News Updates </title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Navigation -->
     <ul>
         <li><a href="index.html">HOME</a></li>
         <li><a href="about.html">ABOUT US</a></li>
@@ -20,28 +29,84 @@
         <li><a href="services.html">SERVICES</a></li>
     </ul>
 
-    <img src="_images/hopelogo.png" height="150" width="150" />
-    <p>United Together</p>
-     <div id="imagecontainer">m
-    <img src="_images/drought.jpg" width="150"  />
-    <div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/9t7hPiNCe-Y?si=z56GvFkRzfgOQYGS"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-     <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Pan4Lo7UZ7Q?si=QI_YgQPHZ2BBoqO0"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/foxww-tMoNg?si=JO4QdpZP_G-nAB87"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    <footer>copyright 2023</footer>
+    <!-- Logo -->
+    <div id="imagecontainer">
+        <img src="_images/hopelogo.png" alt="Hope Logo" height="150" width="150" onclick="showLightbox(this.src)"
+            style="cursor: pointer;">
+    </div>
 
+    <h2>United Together</h2>
+
+    <!-- News Images and Videos Container -->
+    <div id="imagecontainer">
+        <img src="_images/drought.jpg" alt="Drought Impact" width="150" onclick="showLightbox(this.src)"
+            style="cursor: pointer; margin-bottom: 20px;">
+        <br>
+        <iframe width="300" height="250" src="https://www.youtube.com/embed/9t7hPiNCe-Y?si=z56GvFkRzfgOQYGS"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br>
+        <iframe width="300" height="250" src="https://www.youtube.com/embed/Pan4Lo7UZ7Q?si=QI_YgQPHZ2BBoqO0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br>
+        <iframe width="300" height="250" src="https://www.youtube.com/embed/foxww-tMoNg?si=JO4QdpZP_G-nAB87"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+        <!-- Lightbox -->
+        <div id="lightbox"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 1000;">
+            <span onclick="closeLightbox()"
+                style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+            <img id="lightboxImage"
+                style="max-width: 90%; max-height: 90%; margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+                src="" alt="Lightbox Image">
+        </div>
+
+        <!-- Additional Video Controls Script -->
+        <script>
+            // Add event listener to all videos for responsive behavior
+            window.onload = function () {
+                const today = new Date();
+                const formattedDate = today.toLocaleDateString();
+                document.getElementById('dateStamp').innerText = formattedDate;
+
+                // Get all video elements
+                const videos = document.getElementsByTagName('video');
+                for (let video of videos) {
+                    // Add responsive class
+                    video.classList.add('responsive-video');
+
+                    // Add error handling
+                    video.addEventListener('error', function (e) {
+                        console.log('Error loading video:', e);
+                        this.innerHTML = 'Error loading video. Please try again later.';
+                    });
+
+                    // Add loading indicator
+                    video.addEventListener('loadstart', function () {
+                        this.innerHTML += '<div class="loading">Loading video...</div>';
+                    });
+
+                    // Remove loading indicator when video can play
+                    video.addEventListener('canplay', function () {
+                        const loading = this.querySelector('.loading');
+                        if (loading) loading.remove();
+                    });
+                }
+            };
+        </script>
+
+        <footer>
+            <p>Copyright <span id="dateStamp"></span></p>
+        </footer>
+
+        <script src="scripts.js"></script>
 </body>
 
 </html>

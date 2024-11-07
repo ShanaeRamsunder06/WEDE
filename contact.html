@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <!--CODE ATTRIBUTION-->
 <!--(THE IIE).2024.WEDE5020 MODULE MANUAL.UNPUBLISHED-->
+<!--//Title: Claude AI-->
+<!--//Author: Dario Amodei.-->
+<!--Version: 3.5-->
+<!--Available:https://claude.ai/new-->
+<!--//Date: 14 March 2023-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONTACT</title>
+    <title>Contact Us - Contact for help</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Navigation -->
     <ul>
         <li><a href="index.html">HOME</a></li>
         <li><a href="about.html">ABOUT US</a></li>
@@ -19,22 +28,76 @@
         <li><a href="services.html">SERVICES</a></li>
     </ul>
 
-    <img src="_images/hopelogo.png" height="150" width="150" />
-    <p>United Together </p>
+    <!-- Logo -->
+    <div id="imagecontainer">
+        <img src="_images/hopelogo.png" alt="Hope Logo" height="150" width="150" onclick="showLightbox(this.src)"
+            style="cursor: pointer;">
+    </div>
 
-    <img src="_images/hazard.jpg.jpg" width="150" height="150" />
+    <h2>United Together</h2>
 
-    <p>Email: hopeforall@gmail.com </p>
-    <p>Phone Number:0851234796</p>
-    <p>Address: 10 high street</p>
+    <!-- Hazard Image -->
+    <div id="imagecontainer">
+        <img src="_images/hazard.jpg.jpg" alt="Hazard Warning" width="150" height="150" onclick="showLightbox(this.src)"
+            style="cursor: pointer;">
+    </div>
 
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6940.270074271824!2d31.11691049340033!3d-29.57067402735736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef710d405b7b285%3A0xfe6e2433b4d60a9b!2sTongaat%20Town%20Hall!5e0!3m2!1sen!2sza!4v1723634828796!5m2!1sen!2sza"
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- Contact Information -->
+    <div style="margin: 20px 0;">
+        <p><strong>Email:</strong> <a href="mailto:hopeforall@gmail.com"
+                style="color: rgb(248, 232, 249);">hopeforall@gmail.com</a></p>
+        <p><strong>Phone Number:</strong> <a href="tel:0851234796" style="color: rgb(248, 232, 249);">085 123 4796</a>
+        </p>
+        <p><strong>Address:</strong> 10 high street</p>
+    </div>
 
-    <footer>copyright 2023</footer>
+    <!-- Contact Form -->
+    <div id="contactform">
+        <form name="myForm" onsubmit="return validationForm()" style="padding: 20px;">
+            <div style="margin-bottom: 15px;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" onclick="clearfield(this)" style="width: 50%; padding: 8px;">
+            </div>
 
+            <div style="margin-bottom: 15px;">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" onclick="clearfield(this)" style="width: 50%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" onclick="clearfield(this)"
+                    style="width: 50%; padding: 8px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="message">Message:</label>
+                <br>
+                <textarea id="message" name="message" onclick="clearfield(this)"
+                    style="width: 90%; padding: 8px; height: 100px;"></textarea>
+            </div>
+
+            <button type="submit"
+                style="background-color: #222; color: white; padding: 10px 20px; border: none; cursor: pointer;">Send
+                Message</button>
+        </form>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 1000;">
+        <span onclick="closeLightbox()"
+            style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+        <img id="lightboxImage"
+            style="max-width: 90%; max-height: 90%; margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+            src="" alt="Lightbox Image">
+    </div>
+
+    <footer>
+        <p>Copyright <span id="dateStamp"></span></p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 
 </html>
